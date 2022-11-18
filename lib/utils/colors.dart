@@ -7,7 +7,7 @@ class AppColor {
   static const iconColor2 = Color(0xFFfcab88);
   static const paraColor = Color(0xFF8f837f);
   static const buttonBgColor = Color(0xFFf7f6f4);
-  static const signColor = Color(0xFFa9a29f);
+  static const signColor = Color.fromARGB(255, 239, 236, 235);
   static const titleColor = Color(0xFF5c524f);
   static const mainBlackColor = Color(0xFF332d2b);
   static const yellowColor = Color(0xFFffd379);

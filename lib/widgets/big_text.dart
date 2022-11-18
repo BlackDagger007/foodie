@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
 class BigText extends StatelessWidget {
-  const BigText({
-    required this.text,
+  const BigText(
+    this.text, {
     this.color = const Color(0xFF332d2b),
     this.size,
     this.overflow = TextOverflow.ellipsis,
     super.key,
   });
 
-  final String text;
+  final String? text;
   final Color color;
   final double? size;
   final TextOverflow overflow;
@@ -19,7 +19,7 @@ class BigText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text ?? '',
       maxLines: 1,
       overflow: overflow,
       style: TextStyle(

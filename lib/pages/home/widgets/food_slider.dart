@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import '../../utils/colors.dart';
-import '../../utils/constants.dart';
-import '../../widgets/big_text.dart';
-import '../../widgets/small_text.dart';
+import '../../../utils/colors.dart';
+import '../../../utils/constants.dart';
+import '../../../widgets/big_text.dart';
+import '../../../widgets/small_text.dart';
 
 class FoodSlider extends StatelessWidget {
   const FoodSlider({
     super.key,
     required this.pageController,
     required this.foodList,
-    required double currentPageValue,
-  }) : _currentPageValue = currentPageValue;
+    required this.currentPageValue,
+  });
 
   final PageController pageController;
   final List<Map<String, dynamic>> foodList;
-  final double _currentPageValue;
+  final double currentPageValue;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class FoodSlider extends StatelessWidget {
         itemBuilder: (context, index) => _buildFoodItem(
           foodList,
           index,
-          _currentPageValue,
+          currentPageValue,
         ),
       ),
     );
@@ -101,13 +101,13 @@ Widget _buildFoodItem(List list, int index, double currentPageValue) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BigText(text: '${list[index]['foodName']}'),
+                BigText('${list[index]['foodName']}'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     RatingsWidget(),
-                    SmallText(text: '4.5'),
-                    SmallText(text: '1231 comments')
+                    SmallText('4.5'),
+                    SmallText('1231 comments')
                   ],
                 ),
                 Row(
@@ -173,7 +173,7 @@ class IconTile extends StatelessWidget {
           size: sH(Constants.iconSizeMedium),
         ),
         const SizedBox(width: 2),
-        SmallText(text: text),
+        SmallText(text),
       ],
     );
   }
