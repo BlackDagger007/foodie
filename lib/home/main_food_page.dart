@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie/widgets/small_text.dart';
 import '../utils/colors.dart';
+import '../utils/constants.dart';
 import '../widgets/big_text.dart';
 import '../widgets/large_food_item.dart';
 
@@ -76,12 +77,15 @@ class _MainFoodPageState extends State<MainFoodPage> {
               GestureDetector(
                 onTap: () {},
                 child: Container(
-                  width: 45,
-                  height: 45,
+                  height: sH(45),
+                  width: sW(45),
                   decoration: BoxDecoration(
                       color: AppColor.mainColor,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: const Icon(Icons.search),
+                      borderRadius: BorderRadius.circular(sH(15))),
+                  child: Icon(
+                    Icons.search,
+                    size: sH(Constants.iconSizeLarge),
+                  ),
                 ),
               )
             ],
@@ -89,8 +93,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
       body: Column(
         children: [
           Container(
-            height: 290,
-            margin: const EdgeInsets.symmetric(vertical: 10),
+            height: sH(Constants.kPageViewHeight),
+            margin: EdgeInsets.symmetric(vertical: sH(10)),
             child: PageView.builder(
               controller: pageController,
               itemCount: foodList.length,
@@ -105,11 +109,10 @@ class _MainFoodPageState extends State<MainFoodPage> {
             dotsCount: foodList.length,
             position: _currentPageValue,
             decorator: DotsDecorator(
-                activeColor: AppColor.mainColor,
-                size: const Size.square(9.0),
-                activeSize: const Size(18.0, 9.0),
+                size: Size.square(sH(9)),
+                activeSize: Size(sH(18.0), sH(9.0)),
                 activeShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0))),
+                    borderRadius: BorderRadius.circular(sH(5)))),
           )
         ],
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/home/main_food_page.dart';
+import 'package:foodie/utils/colors.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,11 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: AppColor.mainColor,
       ),
       home: const MainFoodPage(),
     );

@@ -1,5 +1,5 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:foodie/utils/constants.dart';
 import '../utils/colors.dart';
 import 'big_text.dart';
 import 'small_text.dart';
@@ -9,7 +9,7 @@ Widget buildLargeFoodItem(List list, int index, double currentPageValue) {
   double currentScale;
   double currentTransformation;
   double scaleFactor = 0.8;
-  double height = 220;
+  double height = sH(Constants.kPageViewMainHeight);
 
   if (index <= currentPageValue.floor()) {
     currentScale = 1 - (currentPageValue - index) * (1 - scaleFactor);
@@ -32,11 +32,11 @@ Widget buildLargeFoodItem(List list, int index, double currentPageValue) {
       children: [
         Container(
           height: height,
-          margin: const EdgeInsets.symmetric(horizontal: 10),
+          margin: EdgeInsets.symmetric(horizontal: sH(10)),
           decoration: BoxDecoration(
               //TODO: Resolve image container bg color
               color: Colors.deepOrange,
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(sH(30)),
               image: DecorationImage(
                 image: AssetImage('${list[index]['image']}'),
                 fit: BoxFit.cover,
@@ -45,11 +45,12 @@ Widget buildLargeFoodItem(List list, int index, double currentPageValue) {
         Positioned(
           bottom: 5,
           child: Container(
-            height: 110,
-            padding:
-                const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 8),
+            height: sH(Constants.kPageViewSubHeight),
+            width: sW(Constants.kPageViewSubWidth),
+            padding: EdgeInsets.only(
+                top: sH(15), left: sW(15), right: sW(15), bottom: sH(8)),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(sH(20)),
                 color: Colors.white,
                 boxShadow: const [
                   BoxShadow(
@@ -67,20 +68,18 @@ Widget buildLargeFoodItem(List list, int index, double currentPageValue) {
                   ),
                 ]),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BigText(text: '${list[index]['foodName']}'),
-                const SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     RatingsWidget(),
-                    SizedBox(width: 10),
                     SmallText(text: '4.5'),
-                    SizedBox(width: 10),
                     SmallText(text: '1231 comments')
                   ],
                 ),
-                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
@@ -116,10 +115,8 @@ class RatingsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      children: List.generate(
-          5,
-          (index) =>
-              const Icon(Icons.star, size: 15, color: AppColor.mainColor)),
+      children: List.generate(5,
+          (index) => Icon(Icons.star, size: sH(15), color: AppColor.mainColor)),
     );
   }
 }
@@ -140,7 +137,11 @@ class IconTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: color, size: 20),
+        Icon(
+          icon,
+          color: color,
+          size: sH(Constants.iconSizeMedium),
+        ),
         const SizedBox(width: 2),
         SmallText(text: text),
       ],
