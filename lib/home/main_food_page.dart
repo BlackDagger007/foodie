@@ -4,7 +4,7 @@ import 'package:foodie/widgets/small_text.dart';
 import '../utils/colors.dart';
 import '../utils/constants.dart';
 import '../widgets/big_text.dart';
-import '../widgets/large_food_item.dart';
+import 'widgets/food_slider.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
@@ -92,19 +92,12 @@ class _MainFoodPageState extends State<MainFoodPage> {
           )),
       body: Column(
         children: [
-          Container(
-            height: sH(Constants.kPageViewHeight),
-            margin: EdgeInsets.symmetric(vertical: sH(10)),
-            child: PageView.builder(
-              controller: pageController,
-              itemCount: foodList.length,
-              itemBuilder: (context, index) => buildLargeFoodItem(
-                foodList,
-                index,
-                _currentPageValue,
-              ),
-            ),
-          ),
+          // PageView Slider
+          FoodSlider(
+              pageController: pageController,
+              foodList: foodList,
+              currentPageValue: _currentPageValue),
+          // Dots Indicator
           DotsIndicator(
             dotsCount: foodList.length,
             position: _currentPageValue,

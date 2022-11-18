@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 
 class Constants {
   //PageView
-  static double kPageViewHeight = 290;
-  static double kPageViewMainHeight = 220;
+  static double pageViewHeight = 290;
+  static double pageViewMainHeight = 220;
 
-  static double kPageViewSubHeight = 105;
-  static double kPageViewSubWidth = 220;
+  static double pageViewSubHeight = 105;
+  static double pageViewSubWidth = 220;
 
   //IconSize
   static double iconSizeLarge = 24;

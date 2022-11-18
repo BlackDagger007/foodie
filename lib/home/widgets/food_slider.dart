@@ -1,15 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/utils/constants.dart';
-import '../utils/colors.dart';
-import 'big_text.dart';
-import 'small_text.dart';
+import '../../utils/colors.dart';
+import '../../utils/constants.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/small_text.dart';
 
-Widget buildLargeFoodItem(List list, int index, double currentPageValue) {
+class FoodSlider extends StatelessWidget {
+  const FoodSlider({
+    super.key,
+    required this.pageController,
+    required this.foodList,
+    required double currentPageValue,
+  }) : _currentPageValue = currentPageValue;
+
+  final PageController pageController;
+  final List<Map<String, dynamic>> foodList;
+  final double _currentPageValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: sH(Constants.pageViewHeight),
+      margin: EdgeInsets.symmetric(vertical: sH(10)),
+      child: PageView.builder(
+        controller: pageController,
+        itemCount: foodList.length,
+        itemBuilder: (context, index) => _buildFoodItem(
+          foodList,
+          index,
+          _currentPageValue,
+        ),
+      ),
+    );
+  }
+}
+
+Widget _buildFoodItem(List list, int index, double currentPageValue) {
   Matrix4 matrix;
   double currentScale;
   double currentTransformation;
   double scaleFactor = 0.8;
-  double height = sH(Constants.kPageViewMainHeight);
+  double height = sH(Constants.pageViewMainHeight);
 
   if (index <= currentPageValue.floor()) {
     currentScale = 1 - (currentPageValue - index) * (1 - scaleFactor);
@@ -45,8 +75,8 @@ Widget buildLargeFoodItem(List list, int index, double currentPageValue) {
         Positioned(
           bottom: 5,
           child: Container(
-            height: sH(Constants.kPageViewSubHeight),
-            width: sW(Constants.kPageViewSubWidth),
+            height: sH(Constants.pageViewSubHeight),
+            width: sW(Constants.pageViewSubWidth),
             padding: EdgeInsets.only(
                 top: sH(15), left: sW(15), right: sW(15), bottom: sH(8)),
             decoration: BoxDecoration(
