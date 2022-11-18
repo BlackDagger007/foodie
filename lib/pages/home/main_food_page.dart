@@ -4,9 +4,9 @@ import 'package:foodie/widgets/big_text.dart';
 import 'package:foodie/widgets/small_text.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
-import 'widgets/appbar.dart';
-import 'widgets/food_slider.dart';
-import 'widgets/food_tile.dart';
+import 'components/appbar.dart';
+import 'components/food_slider.dart';
+import 'components/food_tile.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
